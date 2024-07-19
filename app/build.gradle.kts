@@ -47,6 +47,10 @@ dependencies {
     implementation(libs.moshi)
     implementation(libs.squareup.converter.moshi) // Use the latest version available
 
+    // ViewModel with coroutines
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
     // Picasso
     implementation(libs.picasso)
 
