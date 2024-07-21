@@ -1,5 +1,6 @@
-package com.example.rickandmortyapp
+package com.example.rickandmortyapp.network
 
+import com.example.rickandmortyapp.network.response.GetCharacterByIdResponse
 import retrofit2.Response
 
 class ApiClient(private val rickAndMortyService: RickAndMortyService) {

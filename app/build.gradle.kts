@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -16,6 +17,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    kapt {
+        correctErrorTypes = true
     }
 
     buildTypes {
@@ -53,6 +58,11 @@ dependencies {
 
     // Picasso
     implementation(libs.picasso)
+
+    //Epoxy
+    implementation(libs.epoxy)
+    // Add the annotation processor if you are using Epoxy's annotations (recommended)
+    annotationProcessor(libs.epoxy.processor)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

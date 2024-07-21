@@ -1,4 +1,4 @@
-package com.example.rickandmortyapp
+package com.example.rickandmortyapp.network.response
 
 
 import com.squareup.moshi.Json
