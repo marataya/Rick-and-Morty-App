@@ -47,7 +47,7 @@ class CharacterDetailsEpoxyController : EpoxyController() {
 
         DataPointEpoxyModel(
             title = "Origin",
-            description = characterResponse!!.origin!!.name
+            description = characterResponse!!.origin.name
         ).id("data_point_1").addTo(this)
 
         DataPointEpoxyModel(

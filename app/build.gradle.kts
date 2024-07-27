@@ -63,6 +63,12 @@ dependencies {
     implementation(libs.epoxy)
     // Add the annotation processor if you are using Epoxy's annotations (recommended)
     annotationProcessor(libs.epoxy.processor)
+    //epoxy paging support
+    implementation(libs.epoxy.paging)
+
+    //Paging
+    val paging_version = "2.1.2"
+    implementation("androidx.paging:paging-runtime-ktx:$paging_version")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
