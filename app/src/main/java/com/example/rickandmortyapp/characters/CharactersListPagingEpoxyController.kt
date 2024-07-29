@@ -22,7 +22,7 @@ class CharactersListPagingEpoxyController(
         return CharacterGridItemEpoxyModel(
             characterId = item!!.id,
             imageUrl = item!!.image,
-            name = item.name,
+            name = item!!.name,
             onCharacterSelected = onCharacterSelected
         ).id(item.id)
     }

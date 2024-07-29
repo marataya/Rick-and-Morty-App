@@ -60,14 +60,15 @@ dependencies {
     implementation(libs.picasso)
 
     //Epoxy
-    implementation(libs.epoxy)
-    // Add the annotation processor if you are using Epoxy's annotations (recommended)
-    annotationProcessor(libs.epoxy.processor)
-    //epoxy paging support
-    implementation(libs.epoxy.paging)
+    val epoxyVersion = "4.4.1"
+    implementation("com.airbnb.android:epoxy:$epoxyVersion")
+    kapt("com.airbnb.android:epoxy-processor:$epoxyVersion")
+    implementation("com.airbnb.android:epoxy-paging:$epoxyVersion")
 
     //Paging
-    implementation(libs.androidx.paging.runtime.ktx)
+    val paging_version = "2.1.2"
+    implementation("androidx.paging:paging-runtime-ktx:$paging_version")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

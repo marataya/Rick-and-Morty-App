@@ -15,7 +15,7 @@ interface RickAndMortyService {
         @Path("character-id") characterId: Int,
     ): Response<GetCharacterByIdResponse>
 
-    @GET("characters")
+    @GET("character/")
     suspend fun getCharactersPage(
         @Query("page") pageIndex: Int,
     ): Response<GetCharactersPageResponse>
