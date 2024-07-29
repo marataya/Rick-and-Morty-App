@@ -4,9 +4,9 @@ import com.airbnb.epoxy.EpoxyController
 import com.example.rickandmortyapp.databinding.ModelCharacterDetailsDatapointBinding
 import com.example.rickandmortyapp.databinding.ModelCharacterDetailsHeaderBinding
 import com.example.rickandmortyapp.databinding.ModelCharacterDetailsImageBinding
+import com.example.rickandmortyapp.domain.models.CharacterModel
 import com.example.rickandmortyapp.epoxy.LoadingEpoxyModel
 import com.example.rickandmortyapp.epoxy.ViewBindingKotlinModel
-import com.example.rickandmortyapp.network.response.GetCharacterByIdResponse
 import com.squareup.picasso.Picasso
 
 class CharacterDetailsEpoxyController : EpoxyController() {
@@ -18,7 +18,7 @@ class CharacterDetailsEpoxyController : EpoxyController() {
             }
         }
 
-    var characterResponse: GetCharacterByIdResponse? = null
+    var character: CharacterModel? = null
         set(value) {
             field = value
             if (field != null) {
@@ -32,27 +32,27 @@ class CharacterDetailsEpoxyController : EpoxyController() {
             LoadingEpoxyModel().id("loading").addTo(this)
         }
 
-        if (characterResponse == null) {
+        if (character == null) {
             return
         }
 
         HeaderEpoxyModel(
-            name = characterResponse!!.name,
-            gender = characterResponse!!.gender
+            name = character!!.name,
+            gender = character!!.gender
         ).id("header").addTo(this)
 
         ImageEpoxyModel(
-            imageUrl = characterResponse!!.image
+            imageUrl = character!!.image
         ).id("image").addTo(this)
 
         DataPointEpoxyModel(
             title = "Origin",
-            description = characterResponse!!.origin.name
+            description = character!!.origin.name
         ).id("data_point_1").addTo(this)
 
         DataPointEpoxyModel(
             title = "Species",
-            description = characterResponse!!.species
+            description = character!!.species
         ).id("data_point_2").addTo(this)
     }
 

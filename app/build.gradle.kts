@@ -67,8 +67,7 @@ dependencies {
     implementation(libs.epoxy.paging)
 
     //Paging
-    val paging_version = "2.1.2"
-    implementation("androidx.paging:paging-runtime-ktx:$paging_version")
+    implementation(libs.androidx.paging.runtime.ktx)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

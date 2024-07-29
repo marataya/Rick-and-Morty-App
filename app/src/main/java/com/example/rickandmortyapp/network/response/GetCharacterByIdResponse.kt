@@ -9,6 +9,11 @@ data class Origin(@Json(name = "name")
                   val url: String = "")
 
 
+data class Location(@Json(name = "name")
+                    val name: String = "",
+                    @Json(name = "url")
+                    val url: String = "")
+
 data class GetCharacterByIdResponse(@Json(name = "image")
                                     val image: String = "",
                                     @Json(name = "gender")
@@ -34,10 +39,5 @@ data class GetCharacterByIdResponse(@Json(name = "image")
                                     @Json(name = "status")
                                     val status: String = "")
 
-
-data class Location(@Json(name = "name")
-                    val name: String = "",
-                    @Json(name = "url")
-                    val url: String = "")
 
 

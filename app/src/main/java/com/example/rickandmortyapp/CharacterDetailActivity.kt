@@ -1,6 +1,7 @@
 package com.example.rickandmortyapp
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.epoxy.EpoxyRecyclerView
 
-class MainActivity : AppCompatActivity() {
+class CharacterDetailActivity : AppCompatActivity() {
 
     private val viewModel: SharedViewModel by lazy {
         ViewModelProvider(this)[SharedViewModel::class.java]
@@ -21,17 +22,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_character_detail)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        viewModel.characterById.observe(this) { data ->
-            epoxyController.characterResponse = data
-            if (data == null) {
+        viewModel.characterById.observe(this) { character ->
+            epoxyController.character = character
+            if (character == null) {
                 Toast.makeText(this, "Unsuccessfull network call", Toast.LENGTH_SHORT).show()
                 return@observe
             }
         }
-        viewModel.refreshCharacter(12)
+        viewModel.refreshCharacter(characterId = intent.getIntExtra(Constants.INTENT_EXTRA_CHARACTER_ID, 1))
 
         val epoxyRecyclerView = findViewById<EpoxyRecyclerView>(R.id.epoxy_recycler_view)
         epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
@@ -42,6 +44,16 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

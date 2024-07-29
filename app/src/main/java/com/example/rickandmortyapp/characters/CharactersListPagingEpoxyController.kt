@@ -11,16 +11,23 @@ import com.example.rickandmortyapp.network.response.GetCharacterByIdResponse
 import com.squareup.picasso.Picasso
 import java.util.Locale
 
-class CharactersListPagingEpoxyController : PagedListEpoxyController<GetCharacterByIdResponse>() {
+class CharactersListPagingEpoxyController(
+    private val onCharacterSelected: (Int) -> Unit,
+) : PagedListEpoxyController<GetCharacterByIdResponse>() {
+
     override fun buildItemModel(
         currentPosition: Int,
         item: GetCharacterByIdResponse?,
     ): EpoxyModel<*> {
-        return CharacterGridItemEpoxyModel(item!!.image, item.name).id(item.id)
+        return CharacterGridItemEpoxyModel(
+            characterId = item!!.id,
+            imageUrl = item!!.image,
+            name = item.name,
+            onCharacterSelected = onCharacterSelected
+        ).id(item.id)
     }
 
     override fun addModels(models: List<EpoxyModel<*>>) {
-//        super.addModels(models)
         if (models.isEmpty()) {
             LoadingEpoxyModel().id("loading").addTo(this)
             return
@@ -29,7 +36,7 @@ class CharactersListPagingEpoxyController : PagedListEpoxyController<GetCharacte
             .id("main_family_header")
             .addTo(this)
 
-        super.addModels(models.subList(0,5))
+        super.addModels(models.subList(0, 5))
 
         (models.subList(5, models.size) as List<CharacterGridItemEpoxyModel>).groupBy {
             it.name[0].uppercaseChar()
@@ -43,13 +50,19 @@ class CharactersListPagingEpoxyController : PagedListEpoxyController<GetCharacte
     }
 
     data class CharacterGridItemEpoxyModel(
+        val characterId: Int,
         val imageUrl: String,
         val name: String,
+        val onCharacterSelected: (Int) -> Unit,
     ) : ViewBindingKotlinModel<ModelCharacterListItemBinding>(R.layout.model_character_list_item) {
 
         override fun ModelCharacterListItemBinding.bind() {
             Picasso.get().load(imageUrl).into(characterImageView)
             characterNameTextView.text = name
+
+            root.setOnClickListener {
+                onCharacterSelected(characterId)
+            }
         }
     }
 
@@ -59,6 +72,10 @@ class CharactersListPagingEpoxyController : PagedListEpoxyController<GetCharacte
 
         override fun ModelCharacterListTitleBinding.bind() {
             textView.text = title
+        }
+
+        override fun getSpanSize(totalSpanCount: Int, position: Int, itemCount: Int): Int {
+            return totalSpanCount
         }
     }
 
