@@ -7,20 +7,25 @@
     <fragment
         android:id="@+id/characterListFragment"
         android:name="com.example.rickandmortyapp.CharacterListFragment"
-        android:label="fragment_character_list"
-        tools:layout="@layout/fragment_character_list" >
+        android:label=""
+        tools:layout="@layout/fragment_character_list">
         <action
             android:id="@+id/action_characterListFragment_to_characterDetailsFragment"
-            app:destination="@id/characterDetailFragment" />
+            app:destination="@id/characterDetailFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right" />
+        />
     </fragment>
     <fragment
         android:id="@+id/characterDetailFragment"
         android:name="com.example.rickandmortyapp.CharacterDetailFragment"
-        android:label="fragment_character_details"
-        tools:layout="@layout/fragment_character_detail" >
+        android:label=""
+        tools:layout="@layout/fragment_character_detail">
         <argument
             android:name="characterId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
 </navigation>

@@ -60,7 +60,7 @@ class CharacterDetailEpoxyController : EpoxyController() {
             CarouselModel_()
                 .id("episode_carousel")
                 .models(items)
-                .numViewsToShowOnScreen(1.1f)
+                .numViewsToShowOnScreen(1.2f)
                 .addTo(this)
         }
 
