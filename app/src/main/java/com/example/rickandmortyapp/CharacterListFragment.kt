@@ -14,7 +14,7 @@ import com.example.rickandmortyapp.characters.CharactersViewModel
 class CharacterListFragment : Fragment() {
 
 
-//    private val epoxyController = CharactersListPagingEpoxyController(::onCharacterSelected)
+    private val epoxyController = CharactersListPagingEpoxyController(::onCharacterSelected)
 
     private val viewModel: CharactersViewModel by lazy {
         ViewModelProvider(this).get(CharactersViewModel::class.java)
@@ -35,22 +35,22 @@ class CharacterListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        viewModel.charactersPagedList.observe(this) { pagedList ->
-//            epoxyController.submitList(pagedList)
-//        }
+        viewModel.charactersPagedList.observe(viewLifecycleOwner) { pagedList ->
+            epoxyController.submitList(pagedList)
+        }
 
-//        view.findViewById<EpoxyRecyclerView>(R.id.epoxy_recycler_view)
-//            .setController(epoxyController)
+        view.findViewById<EpoxyRecyclerView>(R.id.epoxy_recycler_view)
+            .setController(epoxyController)
 
     }
-
-    override fun onResume() {
-        super.onResume()
-
-        view?.postDelayed({
-            findNavController().navigate(R.id.action_characterListFragment_to_characterDetailsFragment)
-        }, 3000)
-    }
+//
+//    override fun onResume() {
+//        super.onResume()
+//
+//        view?.postDelayed({
+//            findNavController().navigate(R.id.action_characterListFragment_to_characterDetailsFragment)
+//        }, 3000)
+//    }
 
     private fun onCharacterSelected(characterId: Int) {
         val directions = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
