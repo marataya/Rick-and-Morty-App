@@ -1,6 +1,5 @@
 package com.example.rickandmortyapp
 
-import android.util.Log
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import com.example.rickandmortyapp.databinding.ModelCharacterDetailsDatapointBinding
@@ -14,7 +13,7 @@ import com.example.rickandmortyapp.epoxy.LoadingEpoxyModel
 import com.example.rickandmortyapp.epoxy.ViewBindingKotlinModel
 import com.squareup.picasso.Picasso
 
-class CharacterDetailsEpoxyController : EpoxyController() {
+class CharacterDetailEpoxyController : EpoxyController() {
     var isLoading:Boolean = true
         set(value) {
             field = value
