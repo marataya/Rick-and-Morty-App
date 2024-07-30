@@ -23,6 +23,7 @@
         android:name="com.example.rickandmortyapp.CharacterDetailFragment"
         android:label=""
         tools:layout="@layout/fragment_character_detail">
+
         <argument
             android:name="characterId"
             android:defaultValue="-1"

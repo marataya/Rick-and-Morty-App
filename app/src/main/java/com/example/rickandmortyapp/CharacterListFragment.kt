@@ -43,14 +43,6 @@ class CharacterListFragment : Fragment() {
             .setController(epoxyController)
 
     }
-//
-//    override fun onResume() {
-//        super.onResume()
-//
-//        view?.postDelayed({
-//            findNavController().navigate(R.id.action_characterListFragment_to_characterDetailsFragment)
-//        }, 3000)
-//    }
 
     private fun onCharacterSelected(characterId: Int) {
         val directions = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
