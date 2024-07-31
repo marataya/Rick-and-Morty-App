@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/characters_list_menu_item"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="Characters List"
-        app:showAsAction="ifRoom"
-        />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/characterListFragment"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="Inbox" />
+        <item
+            android:id="@+id/episodeListFragment"
+            android:icon="@android:drawable/ic_menu_send"
+            android:title="Sent Items" />
+    </group>
 </menu>
