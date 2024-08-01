@@ -46,7 +46,7 @@ class EpisodeListFragment : Fragment() {
         val epoxyController = EpisodesListEpoxyController()
 
         lifecycleScope.launch {
-            viewModel.flow.collectLatest { pagingData: PagingData<EpisodeModel> ->
+            viewModel.flow.collectLatest { pagingData: PagingData<EpisodeUiModel> ->
                 Log.i("Epoxy", "pagingData: $pagingData")
                 epoxyController.submitData(pagingData)
             }

@@ -3,12 +3,11 @@ package com.example.rickandmortyapp.episodes
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.rickandmortyapp.domain.mappers.EpisodeMapper
-import com.example.rickandmortyapp.domain.models.EpisodeModel
 import com.example.rickandmortyapp.network.NetworkLayer
 
-class EpisodePagingSource(private val repo: EpisodeRepo) : PagingSource<Int, EpisodeModel>() {
+class EpisodesPagingSource(private val repo: EpisodeRepo) : PagingSource<Int, EpisodeUiModel>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, EpisodeModel> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, EpisodeUiModel> {
         val pageNumber = params.key ?: 1
         val prevKey = if (pageNumber == 1) null else pageNumber - 1
 
@@ -19,13 +18,16 @@ class EpisodePagingSource(private val repo: EpisodeRepo) : PagingSource<Int, Epi
         }
         //network call
         return LoadResult.Page(
-            data = pageRequest.body.results.map { EpisodeMapper.buildFrom(it) },
+            data = pageRequest.body.results.map { response ->
+                EpisodeUiModel.Item(EpisodeMapper.buildFrom(response))
+
+            },
             prevKey = prevKey,
             nextKey = pageRequest.body.info.next?.split("?page=")?.get(1)?.toInt()
         )
     }
 
-    override fun getRefreshKey(state: PagingState<Int, EpisodeModel>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, EpisodeUiModel>): Int? {
         // Try to find the page key of the closest page to anchorPosition from
         // either the prevKey or the nextKey; you need to handle nullability
         // here.
