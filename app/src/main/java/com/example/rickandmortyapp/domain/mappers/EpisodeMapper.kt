@@ -1,16 +1,23 @@
 package com.example.rickandmortyapp.domain.mappers
 
 import com.example.rickandmortyapp.domain.models.EpisodeModel
+import com.example.rickandmortyapp.network.response.GetCharacterByIdResponse
 import com.example.rickandmortyapp.network.response.GetEpisodeByIdResponse
 
 object EpisodeMapper {
-    fun buildFrom(networkEpisode: GetEpisodeByIdResponse): EpisodeModel {
+    fun buildFrom(
+        episode: GetEpisodeByIdResponse,
+        charactersList: List<GetCharacterByIdResponse> = emptyList()
+    ): EpisodeModel {
         return EpisodeModel(
-            id = networkEpisode.id,
-            name = networkEpisode.name,
-            airDate = networkEpisode.air_date,
-            seasonNumber = getSeasonNumberFromEpisodeString(networkEpisode.episode),
-            episodeNumber = getEpisodeNumberFromEpisodeString(networkEpisode.episode)
+            id = episode.id,
+            name = episode.name,
+            airDate = episode.air_date,
+            seasonNumber = getSeasonNumberFromEpisodeString(episode.episode),
+            episodeNumber = getEpisodeNumberFromEpisodeString(episode.episode),
+            charactersList = charactersList.map {
+                CharacterMapper.buildFrom(it)
+            }
         )
     }
 

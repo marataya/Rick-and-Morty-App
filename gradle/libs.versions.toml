@@ -22,13 +22,14 @@ navigationUiKtx = "2.7.7"
 lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
 composeBom = "2024.04.01"
-#pagingCommonAndroid = "3.3.1"
+swiperefreshlayout = "1.2.0-alpha01"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 epoxy-paging = { module = "com.airbnb.android:epoxy-paging", version.ref = "epoxyVersion" }
 epoxy-paging3 = { module = "com.airbnb.android:epoxy-paging3", version.ref = "epoxyVersion" }
 epoxy-processor = { module = "com.airbnb.android:epoxy-processor", version.ref = "epoxyVersion" }
@@ -58,7 +59,6 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-#androidx-paging-common-android = { group = "androidx.paging", name = "paging-common-android", version.ref = "pagingCommonAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

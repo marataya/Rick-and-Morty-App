@@ -13,13 +13,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
-class NavGraphActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -27,7 +26,7 @@ class NavGraphActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_nav_graph)
+        setContentView(R.layout.activity_main)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
 //        setSupportActionBar(toolbar)
@@ -48,6 +47,10 @@ class NavGraphActivity : AppCompatActivity() {
                 }
                 R.id.episodeListFragment -> {
                     navController.navigate(R.id.episodeListFragment)
+                    true
+                }
+                R.id.locationsListFragment -> {
+                    navController.navigate(R.id.locationsListFragment)
                     true
                 }
                 else -> false

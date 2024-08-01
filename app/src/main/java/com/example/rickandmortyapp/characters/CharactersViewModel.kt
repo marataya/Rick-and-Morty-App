@@ -7,6 +7,7 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.rickandmortyapp.Constants
 import com.example.rickandmortyapp.network.response.GetCharacterByIdResponse
+import kotlinx.coroutines.launch
 
 class CharactersViewModel : ViewModel() {
     private val repository = CharactersRepo()

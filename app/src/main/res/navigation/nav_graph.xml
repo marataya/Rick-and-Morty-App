@@ -30,8 +30,40 @@
     </fragment>
     <fragment
         android:id="@+id/episodeListFragment"
-        android:name="com.example.rickandmortyapp.episodes.EpisodeListFragment"
+        android:name="com.example.rickandmortyapp.episodes.EpisodesListFragment"
         android:label="Episodes"
         tools:layout="@layout/fragment_episode_list"
-        />
+        >
+        <action
+            android:id="@+id/action_episodeListFragment_to_episodeDetailBottomSheetFragment"
+            app:destination="@id/episodeDetailBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/episodeDetailBottomSheetFragment"
+        android:name="com.example.rickandmortyapp.episodes.detail.EpisodeDetailBottomSheetFragment"
+        android:label="EpisodeDetailBottomSheetFragment" >
+        <argument
+            android:name="episodeId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </dialog>
+    <fragment
+        android:id="@+id/locationsListFragment"
+        android:name="com.example.rickandmortyapp.locations.LocationsListFragment"
+        android:label="Locations" >
+        <action
+            android:id="@+id/action_locationsListFragment_to_locationDetailBottomSheetFragment"
+            app:destination="@id/locationDetailBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/locationDetailBottomSheetFragment"
+        android:name="com.example.rickandmortyapp.locations.detail.LocationDetailBottomSheetFragment"
+        android:label="LocationDetailBottomSheetFragment" >
+        <argument
+            android:name="locationId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </dialog>
+
+
 </navigation>

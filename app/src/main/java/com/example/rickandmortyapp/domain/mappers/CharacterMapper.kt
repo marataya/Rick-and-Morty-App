@@ -7,11 +7,12 @@ import com.example.rickandmortyapp.network.response.GetEpisodeByIdResponse
 object CharacterMapper {
     fun buildFrom(
         response: GetCharacterByIdResponse,
-        episodes: List<GetEpisodeByIdResponse>
+        episodesList: List<GetEpisodeByIdResponse> = emptyList()
     ): CharacterModel {
         return CharacterModel(
             id = response.id,
             name = response.name,
+            status = response.status,
             species = response.species,
             image = response.image,
             origin = CharacterModel.Origin(
@@ -23,7 +24,7 @@ object CharacterMapper {
                 url = response.location.url
             ),
             gender = response.gender,
-            episodeList = episodes.map {
+            episodesList = episodesList.map {
                 EpisodeMapper.buildFrom(it)
             },
         )

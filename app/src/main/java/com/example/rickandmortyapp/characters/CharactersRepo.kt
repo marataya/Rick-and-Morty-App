@@ -32,11 +32,11 @@ class CharactersRepo {
             return null
         }
 
-        val networkEpisodes = getEpisodesFromCharacterResponse(request.body)
+        val episodesList = getEpisodesFromCharacterResponse(request.body)
 
         val character = CharacterMapper.buildFrom(
             response = request.body,
-            episodes = networkEpisodes
+            episodesList = episodesList
         )
 
         RickAndMortyCache.characterMap[characterId] = character

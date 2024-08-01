@@ -32,7 +32,15 @@
             android:id="@+id/gender_view"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_weight="1"
             tools:srcCompat="@drawable/ic_male_24" />
+
+        <ImageView
+            android:id="@+id/status_view"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            tools:srcCompat="@drawable/ic_status_dead" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

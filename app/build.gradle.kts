@@ -87,7 +87,10 @@ dependencies {
     implementation(libs.androidx.paging.runtime.ktx)
 
     //Material
-    implementation("com.google.android.material:material:1.12.0")
+    implementation(libs.material)
+
+    //Swipe to Refresh
+    implementation(libs.androidx.swiperefreshlayout)
 
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

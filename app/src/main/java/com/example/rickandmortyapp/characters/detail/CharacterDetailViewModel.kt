@@ -13,7 +13,7 @@ class CharacterDetailViewModel : ViewModel() {
     private val repo = CharactersRepo()
 
     private val _characterById = MutableLiveData<CharacterModel?>()
-    val characterById: LiveData<CharacterModel?>
+    val characterLiveData: LiveData<CharacterModel?>
         get() = _characterById
 
     fun fetchCharacter(characterId: Int) = viewModelScope.launch {

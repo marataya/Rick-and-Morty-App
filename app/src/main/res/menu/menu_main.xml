@@ -9,5 +9,9 @@
             android:id="@+id/episodeListFragment"
             android:icon="@drawable/ic_episodes"
             android:title="Episodes" />
+        <item
+            android:id="@+id/locationsListFragment"
+            android:icon="@drawable/ic_locations"
+            android:title="Locations" />
     </group>
 </menu>

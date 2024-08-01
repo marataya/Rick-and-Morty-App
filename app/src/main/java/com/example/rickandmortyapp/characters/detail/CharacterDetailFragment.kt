@@ -34,7 +34,7 @@ class CharacterDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.characterById.observe(viewLifecycleOwner) { character ->
+        viewModel.characterLiveData.observe(viewLifecycleOwner) { character ->
 
             epoxyController.character = character
 

@@ -43,7 +43,8 @@ class CharacterDetailEpoxyController : EpoxyController() {
 
         HeaderEpoxyModel(
             name = character!!.name,
-            gender = character!!.gender
+            gender = character!!.gender,
+            status = character!!.status
         ).id("header").addTo(this)
 
         ImageEpoxyModel(
@@ -52,11 +53,11 @@ class CharacterDetailEpoxyController : EpoxyController() {
 
         //Episode Carousel
 
-        val items = character!!.episodeList.map {
+        val items = character!!.episodesList.map {
             EpisodeCarouselItem(it).id(it.id)
         }
 
-        if (character!!.episodeList.isNotEmpty()) {
+        if (character!!.episodesList.isNotEmpty()) {
             TitleEpoxyModel("Episodes").id("title_episodes").addTo(this)
             CarouselModel_()
                 .id("episode_carousel")
@@ -74,11 +75,13 @@ class CharacterDetailEpoxyController : EpoxyController() {
             title = "Species",
             description = character!!.species
         ).id("data_point_2").addTo(this)
+
     }
 
     data class HeaderEpoxyModel (
         val name: String,
-        val gender: String
+        val gender: String,
+        val status: String
     ) : ViewBindingKotlinModel<ModelCharacterDetailsHeaderBinding>(R.layout.model_character_details_header) {
         override fun ModelCharacterDetailsHeaderBinding.bind() {
             fullNameView.text = name
@@ -87,6 +90,15 @@ class CharacterDetailEpoxyController : EpoxyController() {
             } else {
                 genderView.setImageResource(R.drawable.ic_female_24)
             }
+            if (status.equals("Alive", true)) {
+                statusView.setImageResource(R.drawable.ic_status_alive)
+            } else if (status.equals("Dead", true)) {
+                statusView.setImageResource(R.drawable.ic_status_dead)
+            } else {
+                statusView.setImageResource(R.drawable.ic_status_unknown)
+            }
+
+
         }
     }
 

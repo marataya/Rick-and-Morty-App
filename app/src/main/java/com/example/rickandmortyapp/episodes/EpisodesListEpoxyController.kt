@@ -1,15 +1,17 @@
 package com.example.rickandmortyapp.episodes
 
-import android.util.Log
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging3.PagingDataEpoxyController
 import com.example.rickandmortyapp.R
 import com.example.rickandmortyapp.databinding.ModelEpisodeListItemBinding
 import com.example.rickandmortyapp.databinding.ModelEpisodeListTitleBinding
 import com.example.rickandmortyapp.domain.models.EpisodeModel
+import com.example.rickandmortyapp.epoxy.LoadingEpoxyModel
 import com.example.rickandmortyapp.epoxy.ViewBindingKotlinModel
 
-class EpisodesListEpoxyController : PagingDataEpoxyController<EpisodeUiModel>() {
+class EpisodesListEpoxyController(
+    private val onEpisodeClicked: (Int) -> Unit
+) : PagingDataEpoxyController<EpisodeUiModel>() {
 
     override fun buildItemModel(
         currentPosition: Int,
@@ -21,8 +23,9 @@ class EpisodesListEpoxyController : PagingDataEpoxyController<EpisodeUiModel>() 
                 EpisodeListItemEpoxyModel(
                     episode = episode,
                     onClick = { episodeId ->
+                        onEpisodeClicked(episodeId)
                     }
-                ).id(episode.id)
+                ).id("episode_$episode.id")
             }
 
             is EpisodeUiModel.Header -> {
@@ -36,6 +39,7 @@ class EpisodesListEpoxyController : PagingDataEpoxyController<EpisodeUiModel>() 
         val episode: EpisodeModel,
         val onClick: (Int) -> Unit
     ) : ViewBindingKotlinModel<ModelEpisodeListItemBinding>(R.layout.model_episode_list_item) {
+
         override fun ModelEpisodeListItemBinding.bind() {
             episodeNameTextView.text = episode.name
             episodeAirDateTextView.text = episode.airDate
@@ -43,7 +47,6 @@ class EpisodesListEpoxyController : PagingDataEpoxyController<EpisodeUiModel>() 
 
             root.setOnClickListener {onClick(episode.id)}
         }
-
     }
 
     data class EpisodeListTitleEpoxyModel(
@@ -53,6 +56,14 @@ class EpisodesListEpoxyController : PagingDataEpoxyController<EpisodeUiModel>() 
         override fun ModelEpisodeListTitleBinding.bind() {
             textView.text = title
         }
+    }
+
+    override fun addModels(models: List<EpoxyModel<*>>) {
+        if (models.isEmpty()) {
+            LoadingEpoxyModel().id("loading").addTo(this)
+            return
+        }
+        super.addModels(models)
     }
 
 }

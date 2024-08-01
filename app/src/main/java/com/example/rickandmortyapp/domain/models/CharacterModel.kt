@@ -4,11 +4,12 @@ data class CharacterModel(
     val id: Int = 0,
     val image: String = "",
     val gender: String = "",
+    val status: String = "",
     val species: String = "",
     val origin: Origin,
     val name: String = "",
     val location: Location,
-    val episodeList: List<EpisodeModel> = listOf(),
+    val episodesList: List<EpisodeModel> = listOf(),
 ) {
     data class Origin(
         val name: String = "",

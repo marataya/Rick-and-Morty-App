@@ -40,8 +40,17 @@ class CharactersListFragment : Fragment() {
             epoxyController.submitList(pagedList)
         }
 
-        view.findViewById<EpoxyRecyclerView>(R.id.epoxy_recycler_view).setController(epoxyController)
+        view.findViewById<EpoxyRecyclerView>(R.id.epoxy_recycler_view)
+            .setController(epoxyController)
 
+    }
+
+    private fun onCharacterSelected(characterId: Int) {
+        val directions =
+            CharactersListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
+                characterId = characterId
+            )
+        findNavController().navigate(directions)
     }
 
     override fun onDestroyView() {
@@ -49,12 +58,6 @@ class CharactersListFragment : Fragment() {
         _binding = null
     }
 
-    private fun onCharacterSelected(characterId: Int) {
-        val directions = CharactersListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
-                characterId = characterId
-            )
-        findNavController().navigate(directions)
-    }
-
-
 }
+
+

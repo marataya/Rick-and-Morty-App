@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipe_layout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,12 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="8dp"
+            android:paddingBottom="24dp"
             app:itemSpacing="8dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="12"
-            tools:listitem="@layout/model_character_list_item" />
-
+            tools:listitem="@layout/model_location_list_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
