@@ -1,7 +1,8 @@
-package com.example.rickandmortyapp
+package com.example.rickandmortyapp.characters.detail
 
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
+import com.example.rickandmortyapp.R
 import com.example.rickandmortyapp.databinding.ModelCharacterDetailsDatapointBinding
 import com.example.rickandmortyapp.databinding.ModelCharacterDetailsHeaderBinding
 import com.example.rickandmortyapp.databinding.ModelCharacterDetailsImageBinding
@@ -110,7 +111,9 @@ class CharacterDetailEpoxyController : EpoxyController() {
         }
     }
 
-    data class EpisodeCarouselItem(val episode: EpisodeModel) : ViewBindingKotlinModel<ModelEpisodeCarouselItemBinding>(R.layout.model_episode_carousel_item) {
+    data class EpisodeCarouselItem(val episode: EpisodeModel) : ViewBindingKotlinModel<ModelEpisodeCarouselItemBinding>(
+        R.layout.model_episode_carousel_item
+    ) {
         override fun ModelEpisodeCarouselItemBinding.bind() {
             episodeTextView.text = episode.episode
             episodeDetailsTextView.text = "${episode.name}\n${episode.airDate}"

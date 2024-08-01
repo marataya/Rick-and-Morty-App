@@ -78,20 +78,13 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     //Epoxy
-    val epoxyVersion = "4.4.1"
-    implementation("com.airbnb.android:epoxy:$epoxyVersion")
-    kapt("com.airbnb.android:epoxy-processor:$epoxyVersion")
-    implementation("com.airbnb.android:epoxy-paging:$epoxyVersion")
+    implementation(libs.epoxy)
+    kapt(libs.epoxy.processor)
+    implementation(libs.epoxy.paging)
+    implementation(libs.epoxy.paging3)
 
     //Paging
-    val paging_version = "2.1.2"
-    implementation("androidx.paging:paging-runtime-ktx:$paging_version")
-
-    //Loggin Interceptor and networking
-    implementation(libs.logging.interceptor)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
-    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
+    implementation(libs.androidx.paging.runtime.ktx)
 
     //Material
     implementation("com.google.android.material:material:1.12.0")

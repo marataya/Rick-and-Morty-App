@@ -1,4 +1,4 @@
-package com.example.rickandmortyapp
+package com.example.rickandmortyapp.characters
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.example.rickandmortyapp.characters.CharactersListPagingEpoxyController
-import com.example.rickandmortyapp.characters.CharactersViewModel
+import com.example.rickandmortyapp.R
+import com.example.rickandmortyapp.databinding.FragmentCharacterListBinding
 
-class CharacterListFragment : Fragment() {
+class CharactersListFragment : Fragment() {
 
+    private var _binding: FragmentCharacterListBinding? = null
+    private val binding
+        get() = _binding!!
 
     private val epoxyController = CharactersListPagingEpoxyController(::onCharacterSelected)
 
@@ -20,16 +23,14 @@ class CharacterListFragment : Fragment() {
         ViewModelProvider(this).get(CharactersViewModel::class.java)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_character_list, container, false)
+        _binding = FragmentCharacterListBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,13 +40,17 @@ class CharacterListFragment : Fragment() {
             epoxyController.submitList(pagedList)
         }
 
-        view.findViewById<EpoxyRecyclerView>(R.id.epoxy_recycler_view)
-            .setController(epoxyController)
+        view.findViewById<EpoxyRecyclerView>(R.id.epoxy_recycler_view).setController(epoxyController)
 
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun onCharacterSelected(characterId: Int) {
-        val directions = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
+        val directions = CharactersListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
                 characterId = characterId
             )
         findNavController().navigate(directions)

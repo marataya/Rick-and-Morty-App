@@ -9,7 +9,7 @@ import com.example.rickandmortyapp.Constants
 import com.example.rickandmortyapp.network.response.GetCharacterByIdResponse
 
 class CharactersViewModel : ViewModel() {
-    private val repository = CharactersRepository()
+    private val repository = CharactersRepo()
     private val pageListConfig: PagedList.Config = PagedList.Config.Builder()
         .setPageSize(Constants.PAGE_SIZE)
         .setPrefetchDistance(Constants.PREFETCH_DISTANCE)

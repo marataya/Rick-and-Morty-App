@@ -3,11 +3,9 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/characterListFragment"
-            android:icon="@android:drawable/ic_dialog_email"
-            android:title="Inbox" />
+            android:title="Characters" />
         <item
             android:id="@+id/episodeListFragment"
-            android:icon="@android:drawable/ic_menu_send"
-            android:title="Sent Items" />
+            android:title="Episodes" />
     </group>
 </menu>

@@ -6,7 +6,7 @@
     app:startDestination="@id/characterListFragment">
     <fragment
         android:id="@+id/characterListFragment"
-        android:name="com.example.rickandmortyapp.CharacterListFragment"
+        android:name="com.example.rickandmortyapp.characters.CharactersListFragment"
         android:label="Characters"
         tools:layout="@layout/fragment_character_list">
         <action
@@ -16,14 +16,10 @@
             app:exitAnim="@anim/slide_out_to_left"
             app:popEnterAnim="@anim/slide_in_from_left"
             app:popExitAnim="@anim/slide_out_to_right" />
-        <action
-            android:id="@+id/action_characterListFragment_to_episodeListFragment"
-            app:destination="@id/episodeListFragment" />
-        />
     </fragment>
     <fragment
         android:id="@+id/characterDetailFragment"
-        android:name="com.example.rickandmortyapp.CharacterDetailFragment"
+        android:name="com.example.rickandmortyapp.characters.detail.CharacterDetailFragment"
         android:label="Character Details"
         tools:layout="@layout/fragment_character_detail">
 
@@ -34,6 +30,8 @@
     </fragment>
     <fragment
         android:id="@+id/episodeListFragment"
-        android:name="com.example.rickandmortyapp.EpisodeListFragment"
-        android:label="Rick and Morty Episodes" />
+        android:name="com.example.rickandmortyapp.episodes.EpisodeListFragment"
+        android:label="Episodes"
+        tools:layout="@layout/fragment_episode_list"
+        />
 </navigation>

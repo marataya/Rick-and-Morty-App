@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 class CharactersDataSource(
     private val coroutineScope: CoroutineScope,
-    private val repository: CharactersRepository,
+    private val repository: CharactersRepo,
 ) : PageKeyedDataSource<Int, GetCharacterByIdResponse>() {
     override fun loadInitial(
         params: LoadInitialParams<Int>,
