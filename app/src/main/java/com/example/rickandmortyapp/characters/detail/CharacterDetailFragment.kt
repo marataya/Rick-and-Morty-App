@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyRecyclerView
+import com.example.rickandmortyapp.NavGraphDirections
 import com.example.rickandmortyapp.R
 
 
@@ -17,7 +18,12 @@ class CharacterDetailFragment : Fragment() {
         ViewModelProvider(this).get(CharacterDetailViewModel::class.java)
     }
 
-    private val epoxyController = CharacterDetailEpoxyController()
+    private val epoxyController = CharacterDetailEpoxyController { episodeId ->
+        val directions = NavGraphDirections.actionGlobalToEpisodeDetailBottomSheetFragment(
+            episodeId = episodeId
+        )
+        findNavController().navigate(directions)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

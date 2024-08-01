@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/characterListFragment">
+
+    <action
+        android:id="@+id/action_global_to_episodeDetailBottomSheetFragment"
+        app:destination="@id/episodeDetailBottomSheetFragment"
+        />
+
     <fragment
         android:id="@+id/characterListFragment"
         android:name="com.example.rickandmortyapp.characters.CharactersListFragment"
