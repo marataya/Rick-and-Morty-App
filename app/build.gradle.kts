@@ -92,6 +92,9 @@ dependencies {
     //Swipe to Refresh
     implementation(libs.androidx.swiperefreshlayout)
 
+    //Splash
+    implementation(libs.androidx.core.splashscreen)
+
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
