@@ -3,9 +3,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/characterListFragment"
+            android:icon="@drawable/ic_people_24"
             android:title="Characters" />
         <item
             android:id="@+id/episodeListFragment"
+            android:icon="@drawable/ic_episodes"
             android:title="Episodes" />
     </group>
 </menu>

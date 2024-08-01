@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 class NavGraphActivity : AppCompatActivity() {
@@ -29,11 +30,29 @@ class NavGraphActivity : AppCompatActivity() {
         setContentView(R.layout.activity_nav_graph)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.inflateMenu(R.menu.menu_main)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.characterListFragment -> {
+                    navController.navigate(R.id.characterListFragment)
+                    true
+                }
+                R.id.episodeListFragment -> {
+                    navController.navigate(R.id.episodeListFragment)
+                    true
+                }
+                else -> false
+            }
+        }
 
         val builder = AppBarConfiguration.Builder(navController.graph)
         builder.setOpenableLayout(drawer)
